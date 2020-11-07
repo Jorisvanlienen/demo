@@ -46,16 +46,16 @@ def addOne():
 
     new_quark = request.get_json(force=True)
     new_quark = new_quark["name"]
-    print(new_quark)
+    #print(new_quark)
     ##############
     bytestring = str(new_quark)
     bytestring = bytestring[:-2]
     bytestring = bytestring[2:]
-    print(bytestring)
+    #print(bytestring)
     decoded = base64.b64decode(bytestring)
     image = Image.open(io.BytesIO(decoded))
     image_np = np.array(image)
-    print(image_np.shape)
+    #print(image_np.shape)
     new_quark = np.rot90(image_np, k=2, axes=(0, 1))
 
     im = Image.fromarray(new_quark)
@@ -72,12 +72,12 @@ def addOne():
     """new_quark = np.asarray(new_quark, order='C')
     new_quark = bytearray(new_quark)
     new_quark = base64.b64encode(new_quark)
-    print("output \n" + str(new_quark))
+    #print("output \n" + str(new_quark))
     #new_quark = pd.Series(new_quark).to_json(orient='values')
     #new_quark = new_quark.tobytes()
     #new_quark = new_quark.tolist()
     #new_quark = str(new_quark)
-    print(new_quark)
+    #print(new_quark)
     #new_quark = json.dumps(new_quark, default=default)
     #new_quark = new_quark.tolist()  # nested lists with same data, indices
 
@@ -98,11 +98,11 @@ def addOne():
     new_quark = new_quark[2:]
     new_quark = new_quark[:-1]
     new_quark={'name': [new_quark]}
-    print(new_quark)
+    #print(new_quark)
     quarks.append(new_quark)
-    print(new_quark)
+    #print(new_quark)
 
-    print(new_quark)
+    #print(new_quark)
     return jsonify({'quarks' : quarks})
 
 @app.route('/quarks/<string:name>', methods=['PUT'])
